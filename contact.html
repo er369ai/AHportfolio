@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Start a Project — A&amp;H Techworld Ltd</title>
+  <meta name="description" content="Get in touch with A&H Techworld Ltd to discuss your product build, backend architecture, or integration requirement.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header style="position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--color-divider);">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 12px clamp(18px, 4vw, 56px); display: flex; align-items: center; gap: clamp(14px, 3vw, 34px); flex-wrap: wrap;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; margin-right: auto;">
+        <svg width="26" height="26" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="square">
+          <path d="M7 6v52M57 6v52"></path>
+          <path d="M32 6 19 58M32 6l13 52" stroke="var(--color-accent)"></path>
+          <path d="M7 34h50"></path>
+        </svg>
+        <span style="font-family: var(--font-heading); font-weight: 600; font-size: 18px; letter-spacing: 0.02em; line-height: 1;">
+          A&amp;H TECHWORLD<span style="font-size: 10px; letter-spacing: 0.2em; color: color-mix(in srgb, var(--color-text) 55%, transparent); margin-left: 6px;">LTD</span>
+        </span>
+      </a>
+      <nav style="display: flex; align-items: center; gap: clamp(12px, 2vw, 26px); font-family: var(--font-heading); font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase;">
+        <a href="index.html" style="text-decoration: none; color: inherit;">Home</a>
+        <a href="work.html" style="text-decoration: none; color: inherit;">Our works</a>
+        <a href="why-us.html" style="text-decoration: none; color: inherit;">Why us</a>
+        <a href="capabilities.html" style="text-decoration: none; color: inherit;">Capabilities</a>
+        <a href="contact.html" class="btn btn-primary" style="text-transform: uppercase; letter-spacing: 0.06em;">Start a project</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Contact Form Section -->
+    <section style="border-bottom: 1px solid var(--color-divider);">
+      <div style="max-width: 1280px; margin: 0 auto; padding: clamp(48px, 6vw, 96px) clamp(18px, 4vw, 56px);">
+        <div data-reveal="" style="max-width: 640px; margin-bottom: clamp(24px, 3vw, 40px);">
+          <div style="font-family: var(--font-heading); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 12px;">Start a project</div>
+          <h1 style="font-size: clamp(38px, 5.4vw, 72px); line-height: 0.96; letter-spacing: -0.025em; margin: 0 0 16px;">Tell us about the build</h1>
+          <p style="margin: 0; font-size: 16px; color: color-mix(in srgb, var(--color-text) 72%, transparent);">Send us a brief overview of your system or requirement. We respond within 24 hours with a candid assessment.</p>
+        </div>
+
+        <!-- Contact Form Container -->
+        <form id="contact-form" class="blueprint" data-reveal="" style="padding: clamp(20px, 2.6vw, 32px); display: grid; gap: 16px; max-width: 760px;">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+
+          <div class="field">
+            <label>PROJECT STAGE</label>
+            <div class="seg">
+              <label class="seg-opt"><input type="radio" name="stage" value="idea" checked><span>An idea</span></label>
+              <label class="seg-opt"><input type="radio" name="stage" value="in-progress"><span>In progress</span></label>
+              <label class="seg-opt"><input type="radio" name="stage" value="rewrite"><span>A rewrite</span></label>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+            <div class="field">
+              <label for="form-name">YOUR NAME</label>
+              <input type="text" id="form-name" class="input" placeholder="e.g. Alex" required>
+            </div>
+            <div class="field">
+              <label for="form-email">EMAIL ADDRESS</label>
+              <input type="email" id="form-email" class="input" placeholder="alex@company.com" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="form-message">PROJECT SUMMARY</label>
+            <textarea id="form-message" class="input" placeholder="Describe the product, data model, or integration requirement..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="justify-self: start; font-size: 15px; padding: 11px 24px; text-transform: uppercase; letter-spacing: 0.06em;">Submit Inquiry</button>
+        </form>
+
+        <!-- Contact Success Thank You Card -->
+        <div id="contact-success" class="blueprint" style="display: none; padding: clamp(24px, 3vw, 40px); grid-gap: 16px; max-width: 760px;">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5"><path d="M20 6 9 17l-5-5"></path></svg>
+            <h3 style="margin: 0; font-size: 24px;">Inquiry Received</h3>
+          </div>
+          <p style="margin: 0; font-size: 15px; color: color-mix(in srgb, var(--color-text) 74%, transparent);">Thank you for reaching out. We have received your project details and will be in touch within 24 hours.</p>
+          <button type="button" id="reset-form-btn" class="btn btn-secondary" style="align-self: flex-start; margin-top: 6px;">Send another</button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer style="border-top: 1px solid var(--color-divider); padding: 40px clamp(18px, 4vw, 56px); background: var(--color-surface);">
+    <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: center;">
+      <div style="font-family: var(--font-heading); font-size: 14px; letter-spacing: 0.04em;">
+        A&amp;H TECHWORLD LTD · CYPRUS · PRODUCT COMPANY
+      </div>
+      <div style="font-size: 13px; color: color-mix(in srgb, var(--color-text) 60%, transparent);">
+        &copy; 2025 A&amp;H Techworld Ltd. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
