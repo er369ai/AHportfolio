@@ -18,7 +18,7 @@ function Meta({ label, value }: { label: string; value: string }) {
 export function CaseStudyView({ project }: { project: Project }) {
   return (
     <div className="min-h-screen bg-background">
-      <SiteNav />
+      <SiteNav showHome={false} />
       <main className="pt-16">
         <section className="relative border-b border-border/60">
           <div className="relative h-[22rem] overflow-hidden sm:h-[28rem]">
@@ -39,10 +39,10 @@ export function CaseStudyView({ project }: { project: Project }) {
           </div>
           <div className="mx-auto max-w-5xl px-6 pb-14">
             <a
-              href="#work"
+              href="/#ourworks"
               className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              <ArrowLeft className="h-4 w-4" /> All work
+              <ArrowLeft className="h-4 w-4" /> All our works
             </a>
             <p className="mt-8 font-mono text-xs uppercase tracking-[0.28em] text-accent">
               {project.kicker} · {project.year} · {project.domain}

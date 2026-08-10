@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import {
   aiFeatures,
@@ -16,17 +16,44 @@ import { SiteFooter } from "./components/SiteFooter";
 import { SiteNav } from "./components/SiteNav";
 import "./index.css";
 
-function useHashRoute() {
-  const [hash, setHash] = useState("#/");
+function useLocation() {
+  const [location, setLocation] = useState(() => ({
+    pathname: window.location.pathname,
+    hash: window.location.hash,
+    key: 0,
+  }));
 
   useEffect(() => {
-    const read = () => setHash(window.location.hash || "#/");
-    read();
-    window.addEventListener("hashchange", read);
-    return () => window.removeEventListener("hashchange", read);
+    const sync = () =>
+      setLocation((prev) => ({
+        pathname: window.location.pathname,
+        hash: window.location.hash,
+        key: prev.key + 1,
+      }));
+
+    const onClick = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const anchor = (event.target as Element).closest("a");
+      if (!anchor || anchor.target === "_blank" || anchor.hasAttribute("download")) return;
+      const href = anchor.getAttribute("href");
+      if (!href) return;
+      const url = new URL(href, window.location.href);
+      if (url.origin !== window.location.origin) return;
+      event.preventDefault();
+      if (url.href !== window.location.href) window.history.pushState(null, "", url.href);
+      sync();
+    };
+
+    window.addEventListener("popstate", sync);
+    document.addEventListener("click", onClick);
+    return () => {
+      window.removeEventListener("popstate", sync);
+      document.removeEventListener("click", onClick);
+    };
   }, []);
 
-  return hash;
+  return location;
 }
 
 function Home() {
@@ -71,10 +98,10 @@ function Home() {
             <Reveal delay={240}>
               <div className="mt-10 flex flex-wrap items-center gap-3">
                 <a
-                  href="#work"
+                  href="/#ourworks"
                   className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground transition-transform hover:-translate-y-0.5"
                 >
-                  See the work
+                  See our works
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
                 <a
@@ -102,7 +129,7 @@ function Home() {
         </section>
 
         {/* Bento grid */}
-        <section id="work" className="mx-auto max-w-6xl scroll-mt-20 px-6 py-24">
+        <section id="ourworks" className="mx-auto max-w-6xl scroll-mt-20 px-6 py-24">
           <Reveal>
             <p className="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">
               Recent builds
@@ -120,7 +147,7 @@ function Home() {
             {/* Hero tile */}
             <Reveal className="md:col-span-2 md:row-span-2" delay={0}>
               <a
-                href={"#/work/" + hero.slug}
+                href={"/ourworks/" + hero.slug}
                 className="tile group flex h-full min-h-[26rem] flex-col justify-end"
               >
                 <img
@@ -203,7 +230,7 @@ function Home() {
             {rest.map((p, i) => (
               <Reveal key={p.slug} delay={200 + i * 80} className="md:col-span-1">
                 <a
-                  href={"#/work/" + p.slug}
+                  href={"/ourworks/" + p.slug}
                   className="tile group flex h-full min-h-[16rem] flex-col justify-end"
                 >
                   <img
@@ -449,17 +476,22 @@ function Home() {
 }
 
 export default function App() {
-  const hash = useHashRoute();
-  const match = /^#\/work\/([\w-]+)/.exec(hash);
+  const { pathname, hash, key } = useLocation();
+  const match = /^\/ourworks\/([\w-]+)\/?$/.exec(pathname);
   const project = match ? getProject(match[1]!) : undefined;
 
   useEffect(() => {
     document.documentElement.classList.add("dark");
   }, []);
 
+  const lastPathname = useRef<string | null>(null);
   useEffect(() => {
-    if (typeof window !== "undefined") window.scrollTo({ top: 0 });
-  }, [hash]);
+    const behavior: ScrollBehavior = lastPathname.current === pathname ? "smooth" : "instant";
+    lastPathname.current = pathname;
+    const target = hash ? document.getElementById(hash.slice(1)) : null;
+    if (target) target.scrollIntoView({ behavior });
+    else window.scrollTo({ top: 0, behavior });
+  }, [key]);
 
   if (project) return <CaseStudyView project={project} />;
   return <Home />;
