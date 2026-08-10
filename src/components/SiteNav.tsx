@@ -1,6 +1,17 @@
 import { ThemeToggle } from "./ThemeToggle";
 
-export function SiteNav({ showHome = true }: { showHome?: boolean }) {
+const links = [
+  { href: "/", label: "Home", className: "hidden sm:inline" },
+  { href: "/ourworks", label: "Our Works" },
+  { href: "/ai", label: "AI", className: "hidden sm:inline" },
+  { href: "/capabilities", label: "Capabilities", className: "hidden sm:inline" },
+  { href: "/why-us", label: "Why us", className: "hidden lg:inline" },
+];
+
+const isActive = (href: string, pathname: string) =>
+  href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
+
+export function SiteNav({ pathname, showHome = true }: { pathname: string; showHome?: boolean }) {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
@@ -12,25 +23,25 @@ export function SiteNav({ showHome = true }: { showHome?: boolean }) {
           <span className="hidden text-muted-foreground sm:inline">Ltd</span>
         </a>
         <nav className="flex items-center gap-3 whitespace-nowrap text-sm text-muted-foreground sm:gap-6">
-          {showHome && (
-            <a href="/" className="hidden transition-colors hover:text-foreground sm:inline">
-              Home
-            </a>
-          )}
-          <a href="/#ourworks" className="transition-colors hover:text-foreground">
-            Our Works
-          </a>
-          <a href="/#ai" className="hidden transition-colors hover:text-foreground sm:inline">
-            AI
-          </a>
-          <a href="/#capabilities" className="hidden transition-colors hover:text-foreground sm:inline">
-            Capabilities
-          </a>
-          <a href="/#why-us" className="hidden transition-colors hover:text-foreground lg:inline">
-            Why us
-          </a>
+          {links.map((link) => {
+            if (link.href === "/" && !showHome) return null;
+            const active = isActive(link.href, pathname);
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                aria-current={active ? "page" : undefined}
+                className={`transition-colors hover:text-foreground ${link.className ?? ""} ${
+                  active ? "text-foreground" : ""
+                }`}
+              >
+                {link.label}
+              </a>
+            );
+          })}
           <a
-            href="mailto:hello@ahtechworld.com"
+            href="/contact"
+            aria-current={pathname === "/contact" ? "page" : undefined}
             className="rounded-full border border-accent/40 bg-accent/10 px-3 py-1.5 font-medium text-accent transition-colors hover:bg-accent hover:text-accent-foreground sm:px-4"
           >
             Contact
