@@ -244,6 +244,13 @@ const THEME_CSS = String.raw`
 }`;
 
 function useRuntimeStyles() {
+  if (typeof document !== "undefined" && !document.getElementById("ahtw-theme")) {
+    const style = document.createElement("style");
+    style.id = "ahtw-theme";
+    style.setAttribute("type", "text/tailwindcss");
+    style.textContent = THEME_CSS;
+    document.head.appendChild(style);
+  }
   useEffect(() => {
     if (!document.getElementById("ahtw-fonts")) {
       const link = document.createElement("link");
@@ -252,13 +259,6 @@ function useRuntimeStyles() {
       link.href =
         "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap";
       document.head.appendChild(link);
-    }
-    if (!document.getElementById("ahtw-theme")) {
-      const style = document.createElement("style");
-      style.id = "ahtw-theme";
-      style.setAttribute("type", "text/tailwindcss");
-      style.textContent = THEME_CSS;
-      document.head.appendChild(style);
     }
     if (!document.getElementById("ahtw-tw")) {
       const s = document.createElement("script");
