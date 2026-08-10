@@ -1,0 +1,23 @@
+# Node dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+build/
+
+# Executables & Tunnels
+cloudflared
+.thumbnail
+
+# Environment & Local files
+.env
+.env.local
+.env.development.local
+.env.production.local
+
+# OS files
+.DS_Store
+Thumbs.db
