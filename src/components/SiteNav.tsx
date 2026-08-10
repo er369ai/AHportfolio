@@ -18,9 +18,6 @@ export function SiteNav() {
           <a href="#ai" className="hidden transition-colors hover:text-foreground sm:inline">
             AI
           </a>
-          <a href="#vibequest" className="hidden transition-colors hover:text-foreground lg:inline">
-            VibeQuest
-          </a>
           <a href="#capabilities" className="hidden transition-colors hover:text-foreground sm:inline">
             Capabilities
           </a>
