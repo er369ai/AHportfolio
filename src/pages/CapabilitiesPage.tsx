@@ -27,13 +27,7 @@ export function CapabilitiesPage() {
               </div>
             </Reveal>
           ))}
-          <Reveal delay={300}>
-            <div className="flex h-full flex-col justify-center bg-background p-7">
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                Need something adjacent to this list? Ask — small teams say no clearly.
-              </p>
-            </div>
-          </Reveal>
+        
         </div>
       </section>
 
