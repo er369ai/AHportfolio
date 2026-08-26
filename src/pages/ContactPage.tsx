@@ -38,11 +38,11 @@ export function ContactPage() {
                 Email us
               </p>
               <p className="mt-3 text-2xl font-semibold text-foreground sm:text-3xl">
-                hello@ahtechworld.com
+                
               </p>
             </div>
             <a
-              href="mailto:hello@ahtechworld.com"
+              href="mailto:coming soon"
               className="inline-flex shrink-0 items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground transition-transform hover:-translate-y-0.5"
             >
               Start a project
