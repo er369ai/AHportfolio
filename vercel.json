@@ -1,5 +1,67 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+  "framework": null,
+  "buildCommand": null,
+  "installCommand": null,
+  "outputDirectory": ".",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/ourworks",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/ourworks/:slug",
+      "destination": "/work/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/why-us",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/capabilities",
+      "destination": "/#disciplines",
+      "permanent": true
+    },
+    {
+      "source": "/ai",
+      "destination": "/#disciplines",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ]
+    },
+    {
+      "source": "/(fonts|images)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
   ]
 }
