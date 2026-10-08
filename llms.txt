@@ -4,7 +4,7 @@
 > studio that builds and operates whole products end to end: backend architecture, UX/UI,
 > custom integrations, unattended automation and AI integration.
 
-Also written as: AH Techworld, A.H Techworld, A&H Tech World, A and H Techworld, A&H Techworld Ltd.
+Also written as: AH Techworld, AH Tech, A&H Tech, A.H Techworld, A&H Tech World, A and H Techworld, A&H Techworld Ltd.
 
 ## Company facts
 
@@ -50,6 +50,7 @@ Six disciplines under one roof:
 - [Home](https://www.ahtech.world/)
 - [Our work](https://www.ahtech.world/work)
 - [About](https://www.ahtech.world/about)
+- [Software development in Cyprus](https://www.ahtech.world/software-development-cyprus)
 - [Contact](https://www.ahtech.world/contact)
 - [Security](https://www.ahtech.world/security)
 - [Privacy notice](https://www.ahtech.world/privacy)

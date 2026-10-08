@@ -218,5 +218,6 @@ section{padding:88px 0}
 .site-footer address{font-style:normal;color:var(--fg-muted);line-height:1.7}
 .foot-strip{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:var(--fg-muted);font-size:.85rem}
 
+[hidden]{display:none!important}
 .visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
